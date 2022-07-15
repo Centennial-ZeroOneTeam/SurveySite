@@ -23,7 +23,7 @@ module.exports.displaySurveyList = (req, res, next) => {
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('survey/add', {title: 'Add Survey'})          
+    res.render('survey/form', {title: 'Add Survey1'})          
 }
 
 module.exports.processAddPage = (req, res, next) => {
