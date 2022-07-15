@@ -1,7 +1,7 @@
 # External Design Document #
 
 # Zero One Team #
-![alt text](https://github.com/Centennial-ZeroOneTeam/SurveySite/blob/master/public/img/image.jpg?raw=true)
+![alt text](https://github.com/Centennial-ZeroOneTeam/SurveySite/blob/master/public/img/logo.jpg?raw=true)
 
 # Content #
 
