@@ -26,9 +26,7 @@ module.exports.displayAddPage = (req, res, next) => {
 module.exports.processAddPage = (req, res, next) => {
     let newSurvey = SurveyInfo({
         "surveyID": req.body.id,
-        "author": req.body.author,
         "question": req.body.question,
-        "questionType": req.body.type
 
     });
 
@@ -74,9 +72,7 @@ module.exports.processEditPage = (req, res, next) => {
 
     let updatedSurvey = SurveyInfo({
         "_id": req.params.id,
-        "author": req.body.author,
         "question": req.body.question,
-        "questionType": req.body.type
     });
 
     SurveyInfo.updateOne({_id: id}, updatedSurvey, (err) => {
