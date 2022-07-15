@@ -1,58 +1,29 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
-<style>
-    html, body,  .container{
-        background-color: #222222;
-        color:white;
-    }
 
-</style>
-<div class="container" >
+<div class="container">
     <div class="row">
-        <div class="offset-md-3 col-md-6" >
-        <h1><%= title%></h1>
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
 
-        <!--Call the POST route to add information from this form-->
+            <!--Call the POST route to add information from this form-->
 
-        <form class="form" method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control"
-                id="usernameTextField"
-                placeholder="Enter username"
-                name="name" value = <%=survey.surveyID%>required>
-            </div>
+            <form class="form" method="POST">
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control"
-                id="emailTextField"
-                placeholder="Enter email"
-                name="email" value = <%=survey.author%> required>
-            </div>
+                <div class="form-group">
+                    <label for="questionTextField">Question</label>
+                    <input type="text" class="form-control"
+                           id="questionTextField"
+                           placeholder="Enter the Question"
+                           name="question" value=<%= survey.question %> required>
+                </div>
 
-            <div class="form-group">
-                <label for="number">Password</label>
-                <input type="text" class="form-control"
-                id="numberTextField"
-                placeholder="Enter number"
-                name="number" value = <%=survey.question%> required>
-            </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <a href="/survey" class="btn btn-warning">Cancel</a>
 
-            <div class="form-group">
-                <label for="number">Password</label>
-                <input type="text" class="form-control"
-                id="numberTextField"
-                placeholder="Enter number"
-                name="number" value = <%=survey.questionType%> required>
-            </div>
-
-
-            <button class="btn btn-primary" type="submit">Submit</button>
-            <a href="/survey" class="btn btn-warning">Cancel</a>
-            
-        </form>
+            </form>
         </div>
     </div>
 </div>

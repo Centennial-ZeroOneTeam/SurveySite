@@ -1,52 +1,49 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
-  
 
-  <!-- Main Content -->
-  <main class="container">
+
+<!-- Main Content -->
+<main class="container">
     <div class="row">
-        <div class="offset-md-0 col-md-11">
+        <div class="offset-md-0 col-md-10">
             <h1><%= title %></h1>
 
-                <a href="/survey/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add a Survey</a>
-                <br>
+            <a href="/survey/add" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Add a Question</a>
+            <br>
             <br>
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row-->
                 <tr class="d-flex">
 
-                        <th class="text-center col-2">Author Name</th>
-                        <th class="text-center col-3">Survey ID</th>
-                        <th class="text-center col-4">Question</th>
-                        <th class="text-center col-1">Edit</th>
-                        <th class="text-center col-1">Delete</th>
+                    <th class="text-center col-8">Question</th>
+                    <th class="text-center col-2">Edit</th>
+                    <th class="text-center col-2">Delete</th>
                 </tr>
 
                 <!-- Repeatable Template Row -->
 
                 <% for(let count = 0; count < surveyList.length; count++) { %>
                     <tr class="d-flex">
-                            <td class="text-center col-2"><%= surveyList[count].author %></td>
-                            <td class="text-center col-3"><%= surveyList[count]._id %></td>
-                            <td class="text-center col-4"><%= surveyList[count].question %></td>            
-                            <td class="text-center col-1">
-                                <a href="/survey/edit/<%= surveyList[count]._id %>" class="btn btn-primary btn-sm">
+
+                        <td class="text-center col-8"><%= surveyList[count].question %></td>
+                        <td class="text-center col-2">
+                            <a href="/survey/edit/<%= surveyList[count]._id %>" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt"></i> Edit</a>
-                            </td>
-                            <td class="text-center col-1">
-                                <a href="/survey/delete/<%= surveyList[count]._id %>" class="btn btn-danger btn-sm">
+                        </td>
+                        <td class="text-center col-2">
+                            <a href="/survey/delete/<%= surveyList[count]._id %>" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i> Delete</a>
-                            </td>
+                        </td>
                     </tr>
                 <% } %>
             </table>
         </div>
     </div>
-  </main>
-  
-<%- include ../partials/bottom_nav.ejs %>  
+</main>
+
+<%- include ../partials/bottom_nav.ejs %>
 
 <%- include ../partials/footer.ejs %>
   

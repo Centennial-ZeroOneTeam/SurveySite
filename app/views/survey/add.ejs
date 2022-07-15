@@ -9,49 +9,23 @@
             <h1><%= title %></h1>
 
             <form class="form" method="POST">
-                <div class="form-group">
-                    <label for="authorTextField">Author</label>
-                    <input type="text" class="form-control"
-                    id="authorTextField"
-                    placeholder="Enter the Author"
-                    name="author" required>
-                </div>
 
                 <div class="form-group">
                     <label for="questionTextField">Question</label>
                     <input type="text" class="form-control"
-                    id="questionTextField"
-                    placeholder="Enter the Question"
-                    name="question" required>
+                           id="questionTextField"
+                           placeholder="Enter the Question"
+                           name="question" required>
                 </div>
 
-                <label for = "type">Type</label>
-                <div class="dropdown">
-                    
-                    
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name = "type">
-                      Type of Question
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
 
-                <div class="form-group">
-                    <label for="surveyIDTextField">Type</label>
-                    <input type="text" class="form-control"
-                    id="surveyIDTextField"
-                    placeholder="Enter the surveyID"
-                    name="surveyID" required>
-                </div>
-
+                <br>
                 <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-edit"></i> Submit</button>
-                
-                    <a href="/survey" class="btn btn-warning">
-                        <i class="fas fa-undo"></i> Cancel</a>
+                    <i class="fas fa-edit"></i> Submit
+                </button>
+
+                <a href="/survey" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>
 
             </form>
         </div>
@@ -60,7 +34,6 @@
 </div>
 
 
-
-<%- include ../partials/bottom_nav.ejs %>  
+<%- include ../partials/bottom_nav.ejs %>
 
 <%- include ../partials/footer.ejs %>
