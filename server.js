@@ -5,7 +5,7 @@
  */
 
 var app = require('./server/config/app');
-var debug = require('debug')('survey-site:server');
+var debug = require('debug')('surveysitebrandnew:server');
 var http = require('http');
 
 /**
