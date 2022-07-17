@@ -27,7 +27,6 @@ module.exports.processAddPage = (req, res, next) => {
     let newSurvey = SurveyInfo({
         "surveyID": req.body.id,
         "question": req.body.question,
-
     });
 
     SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
@@ -84,3 +83,151 @@ module.exports.processEditPage = (req, res, next) => {
         }
     });
 }
+
+/* Stanley Update begin */
+/* Stanley Update begin */
+/* Stanley Update begin */
+module.exports.displayAddMcQuestion = (req, res, next) => {
+    // new empty data
+    let question = {
+        title: '',
+        answer: []
+    };
+
+    res.render('survey/mcQuestion', {
+        title: 'Create MC Question',
+        question: question
+    })
+}
+
+module.exports.displayEditMcQuestion = (req, res, next) => {
+    let id = req.params.id;
+
+    // SurveyInfo.findById(id, (err, surveyToEdit) => {
+    let question = { // should get data from db by id
+        title: 'demo',
+        answer: ['ans1', 'ans2']
+    };
+
+    res.render('survey/mcQuestion', {
+        title: 'Edit MC Question',
+        question: question
+    })
+}
+
+module.exports.processAddMcQuestion = (req, res, next) => {
+    
+    console.log(req.body);
+
+    // let newSurvey = SurveyInfo({
+    //     "surveyID": req.body.id,
+    //     "question": req.body.question,
+    // });
+
+    // SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.end(err);
+    //     } else {
+            res.redirect('/survey');
+    //     }
+    // });
+
+}
+
+module.exports.processEditMcQuestion = (req, res, next) => {
+
+    console.log(req.body);
+
+    // let id = req.params.id
+
+    // let updatedSurvey = SurveyInfo({
+    //     "_id": req.params.id,
+    //     "question": req.body.question,
+    // });
+
+    // SurveyInfo.updateOne({_id: id}, updatedSurvey, (err) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.end(err);
+    //     } else {
+            res.redirect('/survey');
+    //     }
+    // });
+}
+
+module.exports.displayAddSingleTextQuestion = (req, res, next) => {
+    // new empty data
+    let question = {
+        title: '',
+    };
+
+    res.render('survey/singleTextQuestion', {
+        title: 'Create Single Text Question',
+        question: question
+    })
+}
+
+module.exports.displayEditSingleTextQuestion = (req, res, next) => {
+    let id = req.params.id;
+
+    // SurveyInfo.findById(id, (err, surveyToEdit) => {
+    let question = { // should get data from db by id
+        title: 'demo',
+    };
+
+    res.render('survey/singleTextQuestion', {
+        title: 'Edit Single Text Question',
+        question: question
+    })
+}
+
+module.exports.processAddSingleTextQuestion = (req, res, next) => {
+    
+    console.log(req.body);
+
+    // let newSurvey = SurveyInfo({
+    //     "surveyID": req.body.id,
+    //     "question": req.body.question,
+    // });
+
+    // SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.end(err);
+    //     } else {
+            res.redirect('/survey');
+    //     }
+    // });
+
+}
+
+module.exports.processEditSingleTextQuestion = (req, res, next) => {
+
+    console.log(req.body);
+
+    // let id = req.params.id
+
+    // let updatedSurvey = SurveyInfo({
+    //     "_id": req.params.id,
+    //     "question": req.body.question,
+    // });
+
+    // SurveyInfo.updateOne({_id: id}, updatedSurvey, (err) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.end(err);
+    //     } else {
+            res.redirect('/survey');
+    //     }
+    // });
+}
+/* Stanley Update end */
+/* Stanley Update end */
+/* Stanley Update end */
+
+
+
+
+
+

@@ -4,47 +4,109 @@
 
 
 <!-- Main Content -->
-<main class="container">
+<main class="container pt-5">
     <div class="row">
-        <div class="offset-md-0 col-md-10">
-            <h1><%= title %></h1>
+        <div class="col-md-10 m-auto">
+            <h1>My Survey</h1>
+            <!-- <h1><%= title %></h1> -->
+            <form method="POST">
+                <div class="mb-3 row">
+                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="title" id="title" class="form-control" value="">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="startDate" class="col-sm-2 col-form-label">Start Date</label>
+                    <div class="col-sm-6 ">
+                        <div class="input-group">
+                            <input type="date" name="startDate" id="startDate" class="form-control" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-date"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="endDate" class="col-sm-2 col-form-label">End Date</label>
+                    <div class="col-sm-6 ">
+                        <div class="input-group">
+                            <input type="date" name="endDate" id="endDate" class="form-control" aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="basic-addon2"><i class="bi bi-calendar-date"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="status" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-6 ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="statusPublic" value="1">
+                            <label class="form-check-label" for="statusPublic">Public</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="statusPrivate" value="0" checked>
+                            <label class="form-check-label" for="statusPrivate">Private</label>
+                        </div>
+                    </div>
+                </div>
 
-            <a href="/survey/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add a Question</a>
-            <br>
-            <br>
-            <table class="table table-bordered table-striped table-hover">
-                <!-- Header Row-->
-                <tr class="d-flex">
+                <div class="mb-3 row">
+                    <div class="col-8 text-end">
+                        <a class="btn btn-primary">Update</a>
+                    </div>
+                </div>
+            </form>
+            <br/><br/><br/>
+            <h2>Questions</h2>
+            <div class="d-flex">
+                <a href="/survey/mcQuestion" class="btn btn-outline-primary ms-auto" role="button"><i class="fas fa-plus-circle"></i> Add Multiple chooice question</a>
+                <a href="/survey/singleTextQuestion" class="btn btn-outline-primary ms-2" role="button"><i class="fas fa-plus-circle"></i> Add Single text question</a>
+                <a href="/survey/add" class="btn btn-primary ms-2" role="button"><i class="fas fa-plus-circle"></i> Add question</a>
+            </div>
+            <div class="d-flex pt-5">
+                <a href="/survey/mcQuestion/123demo" class="btn btn-outline-default ms-auto" role="button"><i class="fas fa-plus-circle"></i> Demo edit Multiple chooice question</a>
+                <a href="/survey/singleTextQuestion/123demo" class="btn btn-outline-default ms-2" role="button"><i class="fas fa-plus-circle"></i> Demo edit Add Single text question</a>
+            </div>
 
-                    <th class="text-center col-8">Question</th>
-                    <th class="text-center col-2">Edit</th>
-                    <th class="text-center col-2">Delete</th>
-                </tr>
-
-                <!-- Repeatable Template Row -->
-
-                <% for(let count = 0; count < surveyList.length; count++) { %>
-                    <tr class="d-flex">
-
-                        <td class="text-center col-8"><%= surveyList[count].question %></td>
-                        <td class="text-center col-2">
-                            <a href="/survey/edit/<%= surveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i> Edit</a>
+            <div class="table-responsive mt-3">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Questions</th>
+                            <th width="200"></th>
+                        </tr>
+                    </thead>
+                    <% if (surveyList.length > 0) { %>
+                    <% for(let count = 0; count < surveyList.length; count++) { %>
+                    <tr>
+                        <td>
+                            <%= surveyList[count].question %>
                         </td>
-                        <td class="text-center col-2">
-                            <a href="/survey/delete/<%= surveyList[count]._id %>" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i> Delete</a>
+                        <td class="text-end">
+                            <a href="/survey/edit/<%= surveyList[count]._id %>" class="btn btn-outline-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <a href="/survey/delete/<%= surveyList[count]._id %>" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                     </tr>
-                <% } %>
-            </table>
+                    <% } %>
+                    <% } else { %>
+                    <tr>
+                        <td class="text-center">No question currently</td>
+                    </tr>
+                    <% } %>
+                </table>
+            </div>
         </div>
     </div>
 </main>
 
-<%- include ../partials/bottom_nav.ejs %>
 
+<!-- <script src="/js/bootstrap-datapicker/bootstrap-datepicker.js"></script>
+<link rel='stylesheet' href='/js/bootstrap-datapicker/bootstrap-datepicker.css'/>
+<script>
+    $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+    });
+</script> -->
+
+<%- include ../partials/bottom_nav.ejs %>
 <%- include ../partials/footer.ejs %>
   
 

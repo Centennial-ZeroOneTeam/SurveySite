@@ -1,0 +1,67 @@
+<%- include ../partials/header.ejs %>
+<%- include ../partials/main_nav.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <br/>
+            <h1><%= title %></h1>
+            <br/><br/>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="question" class="form-label">Question</label>
+                    <input type="text" name="question" id="question" class="form-control" value="<%= question.title %>">
+                </div>
+                <div class="mb-3">
+                    <div class="form-label">Answer</div>
+                    <div id="answer-list">
+                        <% if (question.answer.length > 0) { %>
+                        <% for(let count = 0; count < question.answer.length; count++) { %>
+                        <div class="d-flex align-items-center mb-3">
+                            <input class="form-check-input" type="radio" disabled>
+                            <input type="text" name="answer" class="form-control ms-2" value="<%= question.answer[count] %>"/>
+                            <a class="btn btn-danger ms-2 removeMcAnswer">Remove</a>
+                        </div>
+                        <% } %>
+                        <% } else { %>
+                            <% for(let count = 0; count < 3; count++) { %>
+                            <div class="d-flex align-items-center mb-3">
+                                <input class="form-check-input" type="radio" disabled>
+                                <input type="text" name="answer" class="form-control ms-2" value=""/>
+                                <a class="btn btn-danger ms-2 removeMcAnswer">Remove</a>
+                            </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="text-center pt-3">
+                    <a class="btn btn-outline-primary addMcAnswer">Add answer</a>
+                </div>
+                
+                <div class="d-flex justify-content-between mb-3 pt-5">
+                    <a href="/survey" class="btn btn-default"><i class="fas fa-undo"></i> Cancel</a>
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i> Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$( document ).ready(function() {
+    $('.addMcAnswer').on("click",function(){
+        html = '';
+        html += '<div class="d-flex align-items-center mb-3">';
+        html += '<input class="form-check-input" type="radio" disabled>';
+        html += '<input type="text" name="answer" class="form-control ms-2"/>';
+        html += '<a class="btn btn-danger ms-2 removeMcAnswer">Remove</a>';
+        html += '</div>';      
+        $('#answer-list').append(html);
+    });
+
+    $('#answer-list').on('click', '.removeMcAnswer',function(){
+        $(this).parent('.d-flex').remove();
+    });
+});
+</script>
+
+<%- include ../partials/bottom_nav.ejs %>
+<%- include ../partials/footer.ejs %>
