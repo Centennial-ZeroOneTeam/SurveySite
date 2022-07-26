@@ -116,7 +116,7 @@ module.exports.displayEditMcQuestion = (req, res, next) => {
 }
 
 module.exports.processAddMcQuestion = (req, res, next) => {
-    
+
     console.log(req.body);
 
     // let newSurvey = SurveyInfo({
@@ -129,7 +129,7 @@ module.exports.processAddMcQuestion = (req, res, next) => {
     //         console.log(err);
     //         res.end(err);
     //     } else {
-            res.redirect('/survey');
+    res.redirect('/survey');
     //     }
     // });
 
@@ -151,7 +151,7 @@ module.exports.processEditMcQuestion = (req, res, next) => {
     //         console.log(err);
     //         res.end(err);
     //     } else {
-            res.redirect('/survey');
+    res.redirect('/survey');
     //     }
     // });
 }
@@ -183,7 +183,7 @@ module.exports.displayEditSingleTextQuestion = (req, res, next) => {
 }
 
 module.exports.processAddSingleTextQuestion = (req, res, next) => {
-    
+
     console.log(req.body);
 
     // let newSurvey = SurveyInfo({
@@ -196,7 +196,7 @@ module.exports.processAddSingleTextQuestion = (req, res, next) => {
     //         console.log(err);
     //         res.end(err);
     //     } else {
-            res.redirect('/survey');
+    res.redirect('/survey');
     //     }
     // });
 
@@ -218,7 +218,7 @@ module.exports.processEditSingleTextQuestion = (req, res, next) => {
     //         console.log(err);
     //         res.end(err);
     //     } else {
-            res.redirect('/survey');
+    res.redirect('/survey');
     //     }
     // });
 }
