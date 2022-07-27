@@ -1,0 +1,39 @@
+<%- include ../partials/header.ejs %>
+<%- include ../partials/main_nav.ejs %> 
+<%# Created by: Stanlye %>
+<%# Created date: Jul 27 %>
+<%# Last Updated: Stanlye %>
+<%# Last Updated date: Jul 27 %>
+<div class="container pt-5">
+    <div>Welcome back! <%= username %></div>
+    <h1><%= title %></h1>
+    <div class="text-end"><a href="/account/addSurvey" class="btn btn-primary">Create New Survey</a></div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Survey Title</td>
+                    <td colspan="3" width="1">Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (surveyList.length > 0) { %>
+                <% for(let count = 0; count < surveyList.length; count++) { %>
+                <tr>
+                    <td><%= surveyList[count] %></td>
+                    <td><a href="/account/viewSurvey/<%= surveyList[count] %>" class="btn btn-outline-info btn-sm">View</a></td>
+                    <td><a href="/account/editSurvey/<%= surveyList[count] %>" class="btn btn-outline-primary btn-sm">Edit</a></td>
+                    <td><a href="/account/deleteSurvey/<%= surveyList[count] %>" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                </tr>
+                <% } %>
+                <% } else { %>
+                <tr>
+                    <td class="text-center" colspan="4">No Survey Currently</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%- include ../partials/bottom_nav.ejs %>
+<%- include ../partials/footer.ejs %> 
