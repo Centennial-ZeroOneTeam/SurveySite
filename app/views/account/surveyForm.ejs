@@ -40,12 +40,8 @@
                     <label for="status" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-6 ">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="statusPublic" value="1">
-                            <label class="form-check-label" for="statusPublic">Public</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="statusPrivate" value="0" checked>
-                            <label class="form-check-label" for="statusPrivate">Private</label>
+                            <input class="form-check-input" type="checkbox" name="status" id="statusActive" value="1">
+                            <label class="form-check-label" for="statusActive">Active</label>
                         </div>
                     </div>
                 </div>
@@ -59,12 +55,12 @@
                 <h2>Questions</h2>
                 <div id="question-list">
 
-                    <% questionCount = 1 %>
-                    <div id="question<%= questionCount %>" class="card mb-3">
+                    <% questionCount = 0 %>
+                    <div id="question<%= questionCount %>" data-question-id="<%= questionCount %>" class="question card mb-3">
                         <div class="card-body">
                             <div class="mb-3">
                                 <div class="text-end">
-                                    <a class="btn btn-outline-danger btn-sm removeQuestion" data-question="question<%= questionCount %>">Remove Question</a>
+                                    <a class="btn btn-outline-danger btn-sm removeQuestion">Remove Question</a>
                                 </div>
                                 <label class="form-label">Question</label>
                                 <input type="text" name="questions[<%= questionCount %>][question]" value="<%= %>" class="form-control mb-3"></input>
@@ -74,8 +70,8 @@
                         </div>
                     </div>
 
-                    <% questionCount = 2 %>
-                    <div id="question<%= questionCount %>" class="card mb-3">
+                    <% questionCount = 1 %>
+                    <div id="question<%= questionCount %>" data-question-id="<%= questionCount %>" class="question card mb-3">
                         <div class="card-body">
                             <div class="mb-3">
                                 <div class="text-end">
@@ -114,21 +110,21 @@
 </main>
 <script type="text/javascript">
     $( document ).ready(function() {
-        var questiont_row = <%= 3 %>;
+        var questiont_row = <%= 2 %>;
 
         // Delete Question
         $('#question-list').on('click', '.removeQuestion',function(){
-            var questionID = $(this).data('question');
-            $('#'+questionID).remove();
+            var questionID = $(this).parents('.question').data('question-id');
+            $('#question'+questionID).remove();
         });
 
         // Add SingleText Question
         $('.addSTQuestion').on("click", function(){
-            html = '<div id="question'+questiont_row+'" class="card mb-3">';
+            html = '<div id="question'+questiont_row+'" data-question-id="'+questiont_row+'" class="question card mb-3">';
             html += '<div class="card-body">';
             html += '<div class="mb-3">';
             html += '<div class="text-end">';
-            html += '<a class="btn btn-outline-danger btn-sm removeQuestion" data-question="question'+questiont_row+'">Remove Question</a>';
+            html += '<a class="btn btn-outline-danger btn-sm removeQuestion">Remove Question</a>';
             html += '</div>';
             html += '<label class="form-label">Question</label>';
             html += '<input type="text" name="questions['+questiont_row+'][question]" value="" class="form-control mb-3"></input>';
@@ -143,13 +139,13 @@
             $('#question-list').append(html);
         })
 
-        // Add MC Question
+        // Add Multiple Choice Question
         $('.addMCQuestion').on("click", function(){
-            html = '<div id="question'+questiont_row+'" class="card mb-3">';
+            html = '<div id="question'+questiont_row+'" data-question-id="'+questiont_row+'" class="question card mb-3">';
             html += '<div class="card-body">';
             html += '<div class="mb-3">';
             html += '<div class="text-end">';
-            html += '<a class="btn btn-outline-danger btn-sm removeQuestion" data-question="question'+questiont_row+'">Remove Question</a>';
+            html += '<a class="btn btn-outline-danger btn-sm removeQuestion">Remove Question</a>';
             html += '</div>';
             html += '<label class="form-label">Question</label>';
             html += '<input type="text" name="questions['+questiont_row+'][question]" value="" class="form-control mb-3"></input>';
