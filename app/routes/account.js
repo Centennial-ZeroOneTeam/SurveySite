@@ -25,6 +25,9 @@ let accountController = require('../controllers/account');
 /* Stanley updatd 20220727*/
 router.get('/',accountController.displaySurveyListPage);
 router.get('/addSurvey', accountController.displayAddSurveyFormPage);
+router.post('/addSurvey', accountController.processAddSurveyFormPage);
+
+
 router.get('/editSurvey/:id', accountController.displayEditSurveyListPage);
 router.get('/deleteSurvey/:id', accountController.processDeleteSurvey);
 

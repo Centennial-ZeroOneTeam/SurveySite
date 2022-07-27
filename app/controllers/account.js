@@ -55,6 +55,12 @@ module.exports.displayAddSurveyFormPage = (req, res, next) => {
         surveyInfo: newSurvey
     });
 }
+module.exports.processAddSurveyFormPage = (req, res, next) => {
+    console.log(req.body);
+
+    res.redirect('/account');
+}
+
 module.exports.displayEditSurveyListPage = (req, res, next) => {
     let survey = {
         "title": String,
