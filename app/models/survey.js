@@ -4,7 +4,21 @@ let surveyModel = mongoose.Schema(
     {
         surveyID: String,
         title: String,
-        question: String,
+        startDate: String,
+        endDate: String,
+        active: Boolean,
+        questions: [{
+            title: String,
+            questionType: String,
+            answer: String,
+            answers: [String]
+        }],
+        result: [{
+            questionTitle: String,
+            answerSelected: String,
+            answersSelected: [String]
+        }]
+
     },
     {
         collection: "survey"
