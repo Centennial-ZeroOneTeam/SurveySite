@@ -6,7 +6,7 @@ Last update date: Jul 27
 var express = require('express');
 var router = express.Router();
 
-let surveyController = require('../controllers/survey')
+let surveyController = require('../controllers/publicSurvey')
 
 router.get('/', surveyController.displaySurveyListPage);
 router.get('/:id', surveyController.displaySurveyFormPage);

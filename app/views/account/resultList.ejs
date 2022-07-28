@@ -1,5 +1,5 @@
 <%- include ../partials/header.ejs %>
-<%- include ../partials/main_nav.ejs %> 
+<%- include ../partials/main_nav.ejs %>
 <%# Created by: Stanlye %>
 <%# Created date: Jul 27 %>
 <%# Last Updated: Stanlye %>
@@ -9,24 +9,25 @@
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <td>Survey Result</td>
-                    <td>Action</td>
-                </tr>
+            <tr>
+                <td>Survey Result</td>
+                <td>Action</td>
+            </tr>
             </thead>
             <tbody>
-                <% if (resultList.length > 0) { %>
+            <% if (resultList.length > 0) { %>
                 <% for(let count = 0; count < resultList.length; count++) { %>
-                <tr>
-                    <td><%= resultList[count] %></td>
-                    <td><a href="/account/viewSurveyDetail/<%= resultList[count] %>" class="btn btn-outline-info btn-sm">View</a></td>
-                </tr>
+                    <tr>
+                        <td><%= resultList[count] %></td>
+                        <td><a href="/account/viewSurveyDetail/<%= resultList[count] %>"
+                               class="btn btn-outline-info btn-sm">View</a></td>
+                    </tr>
                 <% } %>
-                <% } else { %>
+            <% } else { %>
                 <tr>
                     <td class="text-center" colspan="2">No Result Currently</td>
                 </tr>
-                <% } %>
+            <% } %>
             </tbody>
         </table>
     </div>

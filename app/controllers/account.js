@@ -12,7 +12,7 @@ let SurveyInfo = require('../models/survey');
 /* Stanley added 20220727 */
 // Login
 module.exports.displayLoginPage = (req, res, next) => {
-    res.render('account/login', {title: 'Login'});
+    res.render('account/auth/login', {title: 'Login'});
 }
 module.exports.processLoginPage = (req, res, next) => {
     console.log(req.body);
@@ -21,25 +21,35 @@ module.exports.processLoginPage = (req, res, next) => {
 }
 // Register
 module.exports.displayRegisterPage = (req, res, next) => {
-    res.render('account/register', {title: 'Register'});
+    res.render('account/auth/register', {title: 'Register'});
 }
 module.exports.processRegisterPage = (req, res, next) => {
     console.log(req.body);
 
     res.redirect('/account');
 }
+
+
 // My Survey
 module.exports.displaySurveyListPage = (req, res, next) => {
-    let surveyList = [1,2,3,4];
+    let surveyList =
+
+        [
+            {"title": "test Q1"},
+            {"title": "test Q2"},
+            {"title": "test Q3"},
+            {"title": "test Q4"},
+        ];
+
     let username = "Username"
 
-    res.render('account/listSurvey',{
+    res.render('account/listSurvey', {
         title: 'Welcome back! ' + username,
         surveyList: surveyList
     });
 }
 module.exports.displayAddSurveyPage = (req, res, next) => {
-    res.render('account/addSurvey',{
+    res.render('account/addSurvey', {
         title: 'Create Survey'
     });
 }
@@ -58,7 +68,7 @@ module.exports.displayEditSurveyPage = (req, res, next) => {
         "questions": []
     };
 
-    res.render('account/editSurvey',{
+    res.render('account/editSurvey', {
         title: 'Edit Survey',
         surveyInfo: survey
     });
@@ -74,9 +84,9 @@ module.exports.processDeleteSurvey = (req, res, next) => {
 
 // View result
 module.exports.displayResultSurveyListPage = (req, res, next) => {
-    let resultList = ['a','b','c','d'];
+    let resultList = ['a', 'b', 'c', 'd'];
 
-    res.render('account/resultList',{
+    res.render('account/resultList', {
         title: 'Submited Surveys',
         resultList: resultList
     });
@@ -90,7 +100,7 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
         "questions": []
     };
 
-    res.render('account/resultDetail',{
+    res.render('account/resultDetail', {
         title: 'Submited Survey\'s Result',
         surveyInfo: survey
     });
@@ -162,13 +172,6 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 //         }
 //     });
 // }
-
-
-
-
-
-
-
 
 
 // module.exports.displayAddMcQuestion = (req, res, next) => {

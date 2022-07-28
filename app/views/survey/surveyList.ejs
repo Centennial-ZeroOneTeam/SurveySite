@@ -18,8 +18,8 @@
                 <% if (surveyList.length > 0) { %>
                 <% for(let count = 0; count < surveyList.length; count++) { %>
                 <tr>
-                    <td><%= surveyList[count] %></td>
-                    <td class="text-center" width="100"><a href="/survey/<%= surveyList[count] %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
+                    <td><%= surveyList[count].title %></td>
+                    <td class="text-center" width="100"><a href="/survey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
                 </tr>
                 <% } %>
                 <% } else { %>
