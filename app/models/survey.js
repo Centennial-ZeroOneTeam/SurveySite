@@ -15,8 +15,7 @@ let surveyModel = mongoose.Schema(
         }],
         result: [{
             questionTitle: String,
-            answerSelected: String,
-            answersSelected: [String]
+            answerSelected: String
         }]
 
     },

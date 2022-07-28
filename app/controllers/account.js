@@ -57,7 +57,14 @@ module.exports.processAddSurvey = (req, res, next) => {
     let newSurvey = SurveyInfo({
         "surveyID": req.body.id,
         "title": req.body.title,
+        // "questions": req.body.questions
     });
+
+
+    console.log(newSurvey);
+
+
+
     SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
         if (err) {
             console.log(err);
