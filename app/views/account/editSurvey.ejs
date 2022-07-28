@@ -8,8 +8,8 @@
             <form method="POST">
                 <div class="mb-3 row">
                     <div class="text-end">
-                        <a href="/account" class="btn btn-outline-primary">cancel</a>
-                        <button class="btn btn-primary">Update</button>
+                        <a href="/account" class="btn btn-outline-secondary">cancel</a>
+                        <button class="btn btn-success"><i class="bi bi-cloud-check"></i> Save</button>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -99,9 +99,15 @@
 
                 </div><!-- end question list-->
 
-                <div class="text-center">
+                <div class="mb-3 text-center">
                     <a class="btn btn-primary addMCQuestion" role="button"><i class="fas fa-plus-circle"></i> Add Multiple chooice question</a>
                     <a class="btn btn-primary addSTQuestion ms-2" role="button"><i class="fas fa-plus-circle"></i> Add Single text question</a>
+                </div>
+                <div class="mb-3 row">
+                    <div class="text-end">
+                        <a href="/account" class="btn btn-outline-secondary">cancel</a>
+                        <button class="btn btn-success"><i class="bi bi-cloud-check"></i> Save</button>
+                    </div>
                 </div>
             </form>
             <br/><br/><br/><br/>
@@ -170,19 +176,17 @@
         })
 
 
-
+        // Add MC Answer
         $('#question-list').on('click', '.addMcAnswer',function(){
-            var questionID = $(this).data('question');
-            var numAnswers = $('#'+questionID).children('.answer').length;
+            var questionID = $(this).parents('.question').data('question-id');
 
-            html = '';
-            html += '<div class="answer d-flex align-items-center mb-3">';
+            html = '<div class="answer d-flex align-items-center mb-3">';
             html += '<input class="form-check-input" type="radio" disabled>';
             html += '<input type="text" name="questions['+questiont_row+'][answers]" class="form-control ms-2" value=""/>';
             html += '<a class="btn btn-danger btn-sm ms-2 removeMcAnswer">Remove</a>';
             html += '</div>';
             
-            $('.answer-list').append(html);
+            $('#question'+questionID+' .answer-list').append(html);
         });
     
         $('#question-list').on('click', '.removeMcAnswer',function(){

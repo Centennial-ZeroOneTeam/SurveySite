@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <td>Survey Title</td>
-                    <td width="1">Action</td>
+                    <td class="text-center">Action</td>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +19,7 @@
                 <% for(let count = 0; count < surveyList.length; count++) { %>
                 <tr>
                     <td><%= surveyList[count] %></td>
-                    <td><a href="/survey/<%= surveyList[count] %>" class="btn btn-outline-info btn-sm">do</a></td>
+                    <td class="text-center" width="100"><a href="/survey/<%= surveyList[count] %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
                 </tr>
                 <% } %>
                 <% } else { %>

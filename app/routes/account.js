@@ -24,11 +24,12 @@ let accountController = require('../controllers/account');
 
 /* Stanley updatd 20220727*/
 router.get('/',accountController.displaySurveyListPage);
-router.get('/addSurvey', accountController.displayAddSurveyFormPage);
-router.post('/addSurvey', accountController.processAddSurveyFormPage);
+router.get('/addSurvey', accountController.displayAddSurveyPage);
+router.post('/addSurvey', accountController.processAddSurvey);
 
+router.get('/editSurvey/:id', accountController.displayEditSurveyPage);
+router.post('/editSurvey/:id', accountController.processEditSurvey);
 
-router.get('/editSurvey/:id', accountController.displayEditSurveyListPage);
 router.get('/deleteSurvey/:id', accountController.processDeleteSurvey);
 
 router.get('/viewSurvey/:id', accountController.displayResultSurveyListPage);

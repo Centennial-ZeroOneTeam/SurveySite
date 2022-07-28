@@ -31,37 +31,25 @@ module.exports.processRegisterPage = (req, res, next) => {
 // My Survey
 module.exports.displaySurveyListPage = (req, res, next) => {
     let surveyList = [1,2,3,4];
+    let username = "Username"
 
-    res.render('account/surveyList',{
-        title: 'Survey Overview',
-        username: 'Username',
+    res.render('account/listSurvey',{
+        title: 'Welcome back! ' + username,
         surveyList: surveyList
     });
 }
-module.exports.displayAddSurveyFormPage = (req, res, next) => {
-    let newSurvey = {
-        "title": String,
-        "dateStart": req.body.dateStart,
-        "dateEnd": req.body.dateEnd,
-        "isActive": req.body.isActive,
-        "questions": [{
-            "title": 'Title',
-        },
-        ]
-    };
-
-    res.render('account/surveyForm',{
-        title: 'Create Survey',
-        surveyInfo: newSurvey
+module.exports.displayAddSurveyPage = (req, res, next) => {
+    res.render('account/addSurvey',{
+        title: 'Create Survey'
     });
 }
-module.exports.processAddSurveyFormPage = (req, res, next) => {
+module.exports.processAddSurvey = (req, res, next) => {
     console.log(req.body);
 
     res.redirect('/account');
 }
 
-module.exports.displayEditSurveyListPage = (req, res, next) => {
+module.exports.displayEditSurveyPage = (req, res, next) => {
     let survey = {
         "title": String,
         "dateStart": req.body.dateStart,
@@ -70,10 +58,15 @@ module.exports.displayEditSurveyListPage = (req, res, next) => {
         "questions": []
     };
 
-    res.render('account/surveyForm',{
+    res.render('account/editSurvey',{
         title: 'Edit Survey',
         surveyInfo: survey
     });
+}
+module.exports.processEditSurvey = (req, res, next) => {
+    console.log(req.body);
+
+    res.redirect('/account');
 }
 module.exports.processDeleteSurvey = (req, res, next) => {
     res.redirect('/account');
