@@ -8,34 +8,20 @@ let mongoose = require('mongoose');
 const SurveyInfo = require("../models/survey");
 
 module.exports.displaySurveyListPage = (req, res, next) => {
-    let surveyList =
-
-        [
-            {"title": "test Q1"},
-            {"title": "test Q2"},
-            {"title": "test Q3"},
-            {"title": "test Q4"},
-        ];
 
 
-    // SurveyInfo.find((err, surveyList) => {
-    //
-    //     if (err) {
-    //         return console.error(err);
-    //     } else {
-    //
-    //         res.render('survey/listSurvey',
-    //             {
-    //                 title: 'Public Survey',
-    //                 surveyList: surveyList
-    //             });
-    //     }
-    // });
-
-    res.render('survey/surveyList', {
-        title: 'Public Survey',
-        surveyList: surveyList
+    SurveyInfo.find((err, surveyList) => {
+        if (err) {
+            return console.error(err);
+        } else {
+            res.render('survey/surveyList',
+                {
+                    title: 'Public Survey',
+                    surveyList: surveyList
+                });
+        }
     });
+
 }
 
 module.exports.displaySurveyFormPage = (req, res, next) => {

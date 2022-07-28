@@ -15,7 +15,8 @@
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-6">
-                        <input type="text" name="title" id="title" class="form-control" required>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Enter the Title"
+                               required>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -63,7 +64,8 @@
                                         Remove Question</a>
                                 </div>
                                 <label class="form-label">Question</label>
-                                <input type="text" name="questions[<%= questionCount %>][question]" value="<%=     %>"
+                                <input type="text" name="questions[<%= questionCount %>][question]"
+                                       value="<%=         %>"
                                        class="form-control mb-3"></input>
                                 <input type="hidden" name="questions[<%= questionCount %>][questionType]" value="st">
                                 <textarea class="form-control" rows="3" disabled></textarea>
@@ -82,7 +84,8 @@
                                         Question</a>
                                 </div>
                                 <label class="form-label">Question</label>
-                                <input type="text" name="questions[<%= questionCount %>][question]" value="<%=     %>"
+                                <input type="text" name="questions[<%= questionCount %>][question]"
+                                       value="<%=         %>"
                                        class="form-control mb-3"></input>
                                 <input type="hidden" name="questions[<%= questionCount %>][questionType]" value="mc">
                                 <div class="form-label">Answer</div>

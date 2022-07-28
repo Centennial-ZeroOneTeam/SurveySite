@@ -32,21 +32,19 @@ module.exports.processRegisterPage = (req, res, next) => {
 
 // My Survey
 module.exports.displaySurveyListPage = (req, res, next) => {
-    let surveyList =
 
-        [
-            {"title": "test Q1"},
-            {"title": "test Q2"},
-            {"title": "test Q3"},
-            {"title": "test Q4"},
-        ];
-
-    let username = "Username"
-
-    res.render('account/listSurvey', {
-        title: 'Welcome back! ' + username,
-        surveyList: surveyList
+    SurveyInfo.find((err, surveyList) => {
+        let username = "Username"
+        if (err) {
+            return console.error(err);
+        } else {
+            res.render('account/listSurvey', {
+                title: 'Welcome back! ' + username,
+                surveyList: surveyList
+            });
+        }
     });
+
 }
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('account/addSurvey', {
@@ -56,7 +54,18 @@ module.exports.displayAddSurveyPage = (req, res, next) => {
 module.exports.processAddSurvey = (req, res, next) => {
     console.log(req.body);
 
-    res.redirect('/account');
+    let newSurvey = SurveyInfo({
+        "surveyID": req.body.id,
+        "title": req.body.title,
+    });
+    SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.redirect('/account');
+        }
+    });
 }
 
 module.exports.displayEditSurveyPage = (req, res, next) => {
