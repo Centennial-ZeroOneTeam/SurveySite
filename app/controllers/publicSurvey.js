@@ -1,15 +1,13 @@
 /*
 Created by Sabeen
 Updated by Stanley
-Last update date: Jul 27
+Last update date: Jul 28
 */
 let express = require('express');
 let mongoose = require('mongoose');
 const SurveyInfo = require("../models/survey");
 
 module.exports.displaySurveyListPage = (req, res, next) => {
-
-
     SurveyInfo.find((err, surveyList) => {
         if (err) {
             return console.error(err);
@@ -36,5 +34,7 @@ module.exports.displaySurveyFormPage = (req, res, next) => {
 }
 
 module.exports.processSubmitSurvey = (req, res, next) => {
+    console.log(req.body);
+
     res.redirect('/survey');
 }
