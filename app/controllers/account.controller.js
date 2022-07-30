@@ -1,46 +1,27 @@
-/*
-Created by Sabeen
-Updated by Stanley
-Last update date: Jul 28
-*/
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
 let SurveyInfo = require('../models/survey');
 
-/* Stanley added 20220727 */
-// Login
-module.exports.displayLoginPage = (req, res, next) => {
-    res.render('account/auth/login', {title: 'Login'});
+function displayName(req) {
+    return req.user ? req.user.displayName : ''
 }
-module.exports.processLoginPage = (req, res, next) => {
-    console.log(req.body);
 
-    res.redirect('/account');
-}
-// Register
-module.exports.displayRegisterPage = (req, res, next) => {
-    res.render('account/auth/register', {title: 'Register'});
-}
-module.exports.processRegisterPage = (req, res, next) => {
-    console.log(req.body);
 
-    res.redirect('/account');
-}
 
 
 // My Survey
 module.exports.displaySurveyListPage = (req, res, next) => {
 
     SurveyInfo.find((err, surveyList) => {
-        let username = "Username"
         if (err) {
             return console.error(err);
         } else {
             res.render('account/listSurvey', {
-                title: 'Welcome back! ' + username,
-                surveyList: surveyList
+                title: 'Survey List',
+                surveyList: surveyList,
+                displayName: displayName(req)
             });
         }
     });
@@ -62,7 +43,6 @@ module.exports.processAddSurvey = (req, res, next) => {
 
 
     console.log(newSurvey);
-
 
 
     SurveyInfo.create(newSurvey, (err, SurveyInfo) => {

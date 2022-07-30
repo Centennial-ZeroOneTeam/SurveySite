@@ -7,7 +7,7 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-let accountController = require('../controllers/account');
+let accountController = require('../controllers/account.controller');
 
 // router.get('/',accountController.displaySurveyList);
 /* GET Route for displaying the Add page - CREATE Operation */
