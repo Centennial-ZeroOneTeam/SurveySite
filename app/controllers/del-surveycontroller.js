@@ -4,6 +4,10 @@ let mongoose = require('mongoose');
 
 let SurveyInfo = require('../models/survey');
 
+function displayName(req) {
+    return req.user ? req.user.displayName : ''
+}
+
 module.exports.displaySurveyList = (req, res, next) => {
     SurveyInfo.find((err, surveyList) => {
         if (err) {
@@ -13,14 +17,15 @@ module.exports.displaySurveyList = (req, res, next) => {
             res.render('survey/listSurvey',
                 {
                     title: 'Survey Overview',
-                    surveyList: surveyList
+                    surveyList: surveyList,
+                    displayName: displayName(req)
                 });
         }
     });
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('survey/addSurvey', {title: 'Add Survey'})
+    res.render('survey/addSurvey', {title: 'Add Survey', displayName: displayName(req)})
 }
 
 module.exports.processAddPage = (req, res, next) => {
@@ -61,7 +66,7 @@ module.exports.displayEditPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            res.render('survey/edit', {title: 'Edit Survey', survey: surveyToEdit})
+            res.render('survey/edit', {title: 'Edit Survey', survey: surveyToEdit, displayName: displayName(req)})
         }
     });
 }
@@ -96,7 +101,8 @@ module.exports.displayAddMcQuestion = (req, res, next) => {
 
     res.render('survey/mcQuestion', {
         title: 'Create MC Question',
-        question: question
+        question: question,
+        displayName: displayName(req)
     })
 }
 
@@ -111,7 +117,8 @@ module.exports.displayEditMcQuestion = (req, res, next) => {
 
     res.render('survey/mcQuestion', {
         title: 'Edit MC Question',
-        question: question
+        question: question,
+        displayName: displayName(req)
     })
 }
 
@@ -164,7 +171,8 @@ module.exports.displayAddSingleTextQuestion = (req, res, next) => {
 
     res.render('survey/singleTextQuestion', {
         title: 'Create Single Text Question',
-        question: question
+        question: question,
+        displayName: displayName(req)
     })
 }
 
@@ -178,7 +186,8 @@ module.exports.displayEditSingleTextQuestion = (req, res, next) => {
 
     res.render('survey/singleTextQuestion', {
         title: 'Edit Single Text Question',
-        question: question
+        question: question,
+        displayName: displayName(req)
     })
 }
 

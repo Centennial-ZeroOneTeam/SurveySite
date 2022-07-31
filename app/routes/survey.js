@@ -8,8 +8,20 @@ var router = express.Router();
 
 let surveyController = require('../controllers/publicSurvey')
 
-router.get('/', surveyController.displaySurveyListPage);
-router.get('/:id', surveyController.displaySurveyFormPage);
-router.post('/:id', surveyController.processSubmitSurvey);
+// helper function for guard purposes
+function requireAuth(req, res, next)
+{
+    // check if the user is logged in
+    if(!req.isAuthenticated())
+    {
+        req.session.url = req.originalUrl;
+        return res.redirect('/login');
+    }
+    next();
+}
+
+router.get('/', requireAuth, surveyController.displaySurveyListPage);
+router.get('/:id', requireAuth, surveyController.displaySurveyFormPage);
+router.post('/:id', requireAuth, surveyController.processSubmitSurvey);
 
 module.exports = router;
