@@ -75,7 +75,19 @@ module.exports.processEditSurvey = (req, res, next) => {
     res.redirect('/account');
 }
 module.exports.processDeleteSurvey = (req, res, next) => {
-    res.redirect('/account');
+    let id = req.params.id;
+
+    SurveyInfo.remove({_id: id}, (err) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            res.redirect('/account');
+        }
+    });
 }
 
 // View result
