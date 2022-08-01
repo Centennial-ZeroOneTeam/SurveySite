@@ -57,19 +57,24 @@ module.exports.processAddSurvey = (req, res, next) => {
 }
 
 module.exports.displayEditSurveyPage = (req, res, next) => {
-    let survey = {
-        "title": String,
-        "dateStart": req.body.dateStart,
-        "dateEnd": req.body.dateEnd,
-        "isActive": req.body.isActive,
-        "questions": []
-    };
-
-    res.render('account/editSurvey', {
-        title: 'Edit Survey',
-        surveyInfo: survey,
-        displayName: displayName(req)
-    });
+    let id = req.params.id;
+    SurveyInfo.findById(id, (err, surveyToEdit) => {
+        console.log(surveyToEdit);
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            //show the edit view
+            res.render('account/editSurvey', {
+                title: 'Edit Survey',
+                surveyInfo: surveyToEdit,
+                displayName: displayName(req)
+            });
+        }
+    });    
 }
 module.exports.processEditSurvey = (req, res, next) => {
     console.log(req.body);
@@ -77,7 +82,16 @@ module.exports.processEditSurvey = (req, res, next) => {
     res.redirect('/account');
 }
 module.exports.processDeleteSurvey = (req, res, next) => {
-    res.redirect('/account');
+    let id = req.params.id;
+
+    SurveyInfo.remove({_id: id}, (err) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.redirect('/account');
+        }
+    });
 }
 
 // View result
