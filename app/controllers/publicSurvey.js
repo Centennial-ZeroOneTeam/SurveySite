@@ -7,6 +7,10 @@ let express = require('express');
 let mongoose = require('mongoose');
 const SurveyInfo = require("../models/survey");
 
+function displayName(req) {
+    return req.user ? req.user.displayName : ''
+}
+
 module.exports.displaySurveyListPage = (req, res, next) => {
     SurveyInfo.find((err, surveyList) => {
         if (err) {
@@ -15,7 +19,8 @@ module.exports.displaySurveyListPage = (req, res, next) => {
             res.render('survey/surveyList',
                 {
                     title: 'Public Survey',
-                    surveyList: surveyList
+                    surveyList: surveyList,
+                    displayName: displayName(req)
                 });
         }
     });
@@ -29,7 +34,8 @@ module.exports.displaySurveyFormPage = (req, res, next) => {
 
     res.render('survey/surveyForm', {
         title: surveyInfo['title'],
-        surveyInfo: surveyInfo
+        surveyInfo: surveyInfo,
+        displayName: displayName(req)
     });
 }
 

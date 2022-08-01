@@ -29,7 +29,8 @@ module.exports.displaySurveyListPage = (req, res, next) => {
 }
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('account/addSurvey', {
-        title: 'Create Survey'
+        title: 'Create Survey',
+        displayName: displayName(req)
     });
 }
 module.exports.processAddSurvey = (req, res, next) => {
@@ -56,18 +57,24 @@ module.exports.processAddSurvey = (req, res, next) => {
 }
 
 module.exports.displayEditSurveyPage = (req, res, next) => {
-    let survey = {
-        "title": String,
-        "dateStart": req.body.dateStart,
-        "dateEnd": req.body.dateEnd,
-        "isActive": req.body.isActive,
-        "questions": []
-    };
-
-    res.render('account/editSurvey', {
-        title: 'Edit Survey',
-        surveyInfo: survey
-    });
+    let id = req.params.id;
+    SurveyInfo.findById(id, (err, surveyToEdit) => {
+        console.log(surveyToEdit);
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            //show the edit view
+            res.render('account/editSurvey', {
+                title: 'Edit Survey',
+                surveyInfo: surveyToEdit,
+                displayName: displayName(req)
+            });
+        }
+    });    
 }
 module.exports.processEditSurvey = (req, res, next) => {
     console.log(req.body);
@@ -96,7 +103,8 @@ module.exports.displayResultSurveyListPage = (req, res, next) => {
 
     res.render('account/resultList', {
         title: 'Submited Surveys',
-        resultList: resultList
+        resultList: resultList,
+        displayName: displayName(req)
     });
 }
 module.exports.displayResultSurveyDetailPage = (req, res, next) => {
@@ -110,7 +118,8 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 
     res.render('account/resultDetail', {
         title: 'Submited Survey\'s Result',
-        surveyInfo: survey
+        surveyInfo: survey,
+        displayName: displayName(req)
     });
 }
 
@@ -118,7 +127,7 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 /* end. Stanley */
 
 // module.exports.displayAddPage = (req, res, next) => {
-//     res.render('account/add', {title: 'Add Question'})
+//     res.render('account/add', {title: 'Add Question', displayName: displayName(req)})
 // }
 
 // module.exports.processAddPage = (req, res, next) => {
@@ -158,7 +167,7 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 //             console.log(err);
 //             res.end(err);
 //         } else {
-//             res.render('account/edit', {title: 'Edit Question', survey: surveyToEdit})
+//             res.render('account/edit', {title: 'Edit Question', survey: surveyToEdit, displayName: displayName(req)})
 //         }
 //     });
 // }
@@ -191,7 +200,8 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 
 //     res.render('survey/mcQuestion', {
 //         title: 'Create MC Question',
-//         question: question
+//         question: question,
+//         displayName: displayName(req)
 //     })
 // }
 
@@ -201,12 +211,13 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 //     // SurveyInfo.findById(id, (err, surveyToEdit) => {
 //     let question = { // should get data from db by id
 //         title: 'demo',
-//         answer: ['ans1', 'ans2']
+//         answer: ['ans1', 'ans2'],        
 //     };
 
 //     res.render('survey/mcQuestion', {
 //         title: 'Edit MC Question',
-//         question: question
+//         question: question,
+//        displayName: displayName(req)
 //     })
 // }
 
@@ -228,7 +239,8 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 
 //     res.render('account/singleTextQuestion', {
 //         title: 'Create Single Text Question',
-//         question: question
+//         question: question,
+//        displayName: displayName(req)
 //     })
 // }
 
@@ -242,7 +254,8 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
 
 //     res.render('account/singleTextQuestion', {
 //         title: 'Edit Single Text Question',
-//         question: question
+//         question: question,
+//        displayName: displayName(req)
 //     })
 // }
 

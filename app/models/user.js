@@ -17,7 +17,8 @@ let User = mongoose.Schema
             type: String,
             default: '',
             trim: true,
-            required: 'Email Address is required'
+            required: 'Email Address is required',
+            match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]
        },
        displayName: 
        {

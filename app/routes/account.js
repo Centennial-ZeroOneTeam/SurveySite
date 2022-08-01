@@ -20,32 +20,43 @@ let accountController = require('../controllers/account.controller');
 // router.get('/delete/:id', accountController.performDelete);
 
 
+// helper function for guard purposes
+function requireAuth(req, res, next)
+{
+    // check if the user is logged in
+    if(!req.isAuthenticated())
+    {
+        req.session.url = req.originalUrl;
+        return res.redirect('/login');
+    }
+    next();
+}
 
 
 /* Stanley updatd 20220727*/
-router.get('/',accountController.displaySurveyListPage);
-router.get('/addSurvey', accountController.displayAddSurveyPage);
-router.post('/addSurvey', accountController.processAddSurvey);
+router.get('/', requireAuth, accountController.displaySurveyListPage);
+router.get('/addSurvey', requireAuth, accountController.displayAddSurveyPage);
+router.post('/addSurvey', requireAuth, accountController.processAddSurvey);
 
-router.get('/editSurvey/:id', accountController.displayEditSurveyPage);
-router.post('/editSurvey/:id', accountController.processEditSurvey);
+router.get('/editSurvey/:id', requireAuth, accountController.displayEditSurveyPage);
+router.post('/editSurvey/:id', requireAuth, accountController.processEditSurvey);
 
-router.get('/deleteSurvey/:id', accountController.processDeleteSurvey);
+router.get('/deleteSurvey/:id', requireAuth, accountController.processDeleteSurvey);
 
-router.get('/viewSurvey/:id', accountController.displayResultSurveyListPage);
-router.get('/viewSurveyDetail/:id', accountController.displayResultSurveyDetailPage);
+router.get('/viewSurvey/:id', requireAuth, accountController.displayResultSurveyListPage);
+router.get('/viewSurveyDetail/:id', requireAuth, accountController.displayResultSurveyDetailPage);
 
-// router.get('/mcQuestion', accountController.displayAddMcQuestion);
-// router.post('/mcQuestion', accountController.processAddMcQuestion);
+// router.get('/mcQuestion', requireAuth, accountController.displayAddMcQuestion);
+// router.post('/mcQuestion', requireAuth, accountController.processAddMcQuestion);
 
-// router.get('/mcQuestion/:id', accountController.displayEditMcQuestion);
-// router.post('/mcQuestion/:id', accountController.processEditMcQuestion);
+// router.get('/mcQuestion/:id', requireAuth, accountController.displayEditMcQuestion);
+// router.post('/mcQuestion/:id', requireAuth, accountController.processEditMcQuestion);
 
-// router.get('/singleTextQuestion', accountController.displayAddSingleTextQuestion);
-// router.post('/singleTextQuestion', accountController.processAddSingleTextQuestion);
+// router.get('/singleTextQuestion', requireAuth, accountController.displayAddSingleTextQuestion);
+// router.post('/singleTextQuestion', requireAuth, accountController.processAddSingleTextQuestion);
 
-// router.get('/singleTextQuestion/:id', accountController.displayEditSingleTextQuestion);
-// router.post('/singleTextQuestion/:id', accountController.processEditSingleTextQuestion);
+// router.get('/singleTextQuestion/:id', requireAuth, accountController.displayEditSingleTextQuestion);
+// router.post('/singleTextQuestion/:id', requireAuth, accountController.processEditSingleTextQuestion);
 /* Stanley updatd end */
 
 module.exports = router;

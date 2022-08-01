@@ -19,7 +19,7 @@
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-6">
-                        <input type="text" name="title" id="title" class="form-control" value="">
+                        <input type="text" name="title" id="title" class="form-control" value="<%= surveyInfo.title %>">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -129,7 +129,7 @@
 </main>
 <script type="text/javascript">
     $(document).ready(function () {
-        var questiont_row = <%= 2 %>;
+        var questiont_row = 2;
 
         // Delete Question
         $('#question-list').on('click', '.removeQuestion', function () {
