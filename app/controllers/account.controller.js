@@ -85,10 +85,13 @@ module.exports.processDeleteSurvey = (req, res, next) => {
     let id = req.params.id;
 
     SurveyInfo.remove({_id: id}, (err) => {
-        if (err) {
+        if(err)
+        {
             console.log(err);
             res.end(err);
-        } else {
+        }
+        else
+        {
             res.redirect('/account');
         }
     });
