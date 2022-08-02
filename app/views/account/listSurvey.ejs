@@ -13,6 +13,9 @@
             <thead>
             <tr>
                 <td>My Surveys</td>
+                <td>Start date</td>
+                <td>End date</td>
+                <td>Username</td>
                 <td colspan="3" class="text-center">Action</td>
             </tr>
             </thead>
@@ -21,20 +24,23 @@
                 <% for(let count = 0; count < surveyList.length; count++) { %>
                     <tr>
                         <td><%= surveyList[count].title %></td>
-                        <td class="text-center" width="100"><a href="/account/viewSurvey/<%= surveyList[count].title %>"
-                                                               class="btn btn-outline-info btn-sm"><i
-                                        class="bi bi-clipboard-data"></i> View</a></td>
-                        <td class="text-center" width="100"><a href="/account/editSurvey/<%= surveyList[count]._id %>"
-                                                               class="btn btn-outline-primary btn-sm"><i
-                                        class="bi bi-pencil-square"></i> Edit</a></td>
-                        <td class="text-center" width="100"><a
-                                    href="/account/deleteSurvey/<%= surveyList[count]._id %>"
-                                    class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i> Delete</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center" width="100">
+                            <a href="/account/viewSurvey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm">
+                                <i class="bi bi-clipboard-data"></i> View</a></td>
+                        <td class="text-center" width="100">
+                            <a href="/account/editSurvey/<%= surveyList[count]._id %>" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-pencil-square"></i> Edit</a></td>
+                        <td class="text-center" width="100">
+                            <a href="/account/deleteSurvey/<%= surveyList[count]._id %>" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-trash3"></i> Delete</a></td>
                     </tr>
                 <% } %>
             <% } else { %>
                 <tr>
-                    <td class="text-center" colspan="4">No Survey Currently</td>
+                    <td class="text-center" colspan="7">No Survey Currently</td>
                 </tr>
             <% } %>
             </tbody>
