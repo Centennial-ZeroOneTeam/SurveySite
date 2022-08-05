@@ -21,7 +21,8 @@ module.exports.displaySurveyListPage = (req, res, next) => {
             res.render('account/listSurvey', {
                 title: 'Survey List',
                 surveyList: surveyList,
-                displayName: displayName(req)
+                displayName: displayName(req),
+                
             });
         }
     });
@@ -30,7 +31,9 @@ module.exports.displaySurveyListPage = (req, res, next) => {
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('account/addSurvey', {
         title: 'Create Survey',
-        displayName: displayName(req)
+        displayName: displayName(req),
+        
+
     });
 }
 module.exports.processAddSurvey = (req, res, next) => {
@@ -38,7 +41,11 @@ module.exports.processAddSurvey = (req, res, next) => {
 
     let newSurvey = SurveyInfo({
         "surveyID": req.body.id,
+        "username":req.body.username,
         "title": req.body.title,
+        "startDate": req.body.startDate,
+        "endDate": req.body.endDate,
+        "status": req.body.status
         // "questions": req.body.questions
     });
 
@@ -102,7 +109,7 @@ module.exports.displayResultSurveyListPage = (req, res, next) => {
     let resultList = ['a', 'b', 'c', 'd'];
 
     res.render('account/resultList', {
-        title: 'Submited Surveys',
+        title: 'Display Surveys',
         resultList: resultList,
         displayName: displayName(req)
     });
@@ -111,6 +118,7 @@ module.exports.displayResultSurveyDetailPage = (req, res, next) => {
     let survey = {
         "title": String,
         "dateStart": req.body.dateStart,
+        "username":req.body.username,
         "dateEnd": req.body.dateEnd,
         "isActive": req.body.isActive,
         "questions": []

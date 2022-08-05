@@ -10,12 +10,7 @@
         <div class="col-12 m-auto">
             <h1 class="mb-3"><%= title %></h1>
             <form method="POST">
-                <div class="mb-3 row">
-                    <div class="text-end">
-                        <a href="/account" class="btn btn-outline-secondary">cancel</a>
-                        <button class="btn btn-success"><i class="bi bi-cloud-check"></i> Save</button>
-                    </div>
-                </div>
+               
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-6">
@@ -26,7 +21,7 @@
                     <label for="startDate" class="col-sm-2 col-form-label">Start Date</label>
                     <div class="col-sm-6 ">
                         <div class="input-group">
-                            <input type="date" name="startDate" id="startDate" class="form-control"
+                            <input type="date" name="startDate" id="startDate" class="form-control"value="<%= surveyInfo.startDate %>"
                                    aria-describedby="basic-addon1">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-date"></i></span>
                         </div>
@@ -36,7 +31,7 @@
                     <label for="endDate" class="col-sm-2 col-form-label">End Date</label>
                     <div class="col-sm-6 ">
                         <div class="input-group">
-                            <input type="date" name="endDate" id="endDate" class="form-control"
+                            <input type="date" name="endDate" id="endDate" class="form-control" value="<%= surveyInfo.endDate %>"
                                    aria-describedby="basic-addon2">
                             <span class="input-group-text" id="basic-addon2"><i class="bi bi-calendar-date"></i></span>
                         </div>
@@ -46,7 +41,7 @@
                     <label for="status" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-6 ">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="status" id="statusActive" value="1">
+                            <input class="form-check-input" type="checkbox" name="status" id="statusActive" value="<%= surveyInfo.status %>">
                             <label class="form-check-label" for="statusActive">Active</label>
                         </div>
                     </div>

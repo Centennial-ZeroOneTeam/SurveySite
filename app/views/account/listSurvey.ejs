@@ -2,8 +2,8 @@
 <%- include ../partials/main_nav.ejs %>
 <%# Created by: Stanlye %>
 <%# Created date: Jul 27 %>
-<%# Last Updated: Stanlye %>
-<%# Last Updated date: Jul 28 %>
+<%# Last Updated: bhhodip %>
+<%# Last Updated date: aug 05 %>
 <div class="container pt-5">
     <h1><%= title %></h1>
     <div class="text-end mb-3"><a href="/account/addSurvey" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
@@ -24,9 +24,10 @@
                 <% for(let count = 0; count < surveyList.length; count++) { %>
                     <tr>
                         <td><%= surveyList[count].title %></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><%= surveyList[count].startDate %></td>
+                        <td><%= surveyList[count].endDate %></td>
+                        <td><%= surveyList[count].username %></td>
+                        <%= console.log(surveyList[count]) %>
                         <td class="text-center" width="100">
                             <a href="/account/viewSurvey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm">
                                 <i class="bi bi-clipboard-data"></i> View</a></td>

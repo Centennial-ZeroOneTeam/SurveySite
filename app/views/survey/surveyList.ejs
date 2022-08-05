@@ -2,8 +2,8 @@
 <%- include ../partials/main_nav.ejs %> 
 <%# Created by: Stanlye %>
 <%# Created date: Jul 27 %>
-<%# Last Updated: Stanlye %>
-<%# Last Updated date: Jul 27 %>
+<%# Last Updated: bhhodip %>
+<%# Last Updated date: aug 5 %>
 <div class="container pt-5">
     <h1><%= title %></h1>
     <div class="table-responsive">
@@ -11,6 +11,10 @@
             <thead>
                 <tr>
                     <td>Survey Title</td>
+                    <td>Start Date </td>
+                    <td>End Date </td>
+                    <td>Username</td>
+                
                     <td class="text-center">Action</td>
                 </tr>
             </thead>
@@ -19,6 +23,9 @@
                 <% for(let count = 0; count < surveyList.length; count++) { %>
                 <tr>
                     <td><%= surveyList[count].title %></td>
+                    <td><%= surveyList[count].startDate %></td>
+                    <td><%= surveyList[count].endDate %></td>
+                    <td><%= surveyList[count].username %></td>
                     <td class="text-center" width="100"><a href="/survey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
                 </tr>
                 <% } %>
