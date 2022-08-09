@@ -6,16 +6,18 @@ Last update date: Jul 28
 let express = require('express');
 let mongoose = require('mongoose');
 const SurveyInfo = require("../models/survey");
+const User = require("../models/user");
 
 function displayName(req) {
     return req.user ? req.user.displayName : ''
 }
 
 module.exports.displaySurveyListPage = (req, res, next) => {
-    SurveyInfo.find((err, surveyList) => {
+    SurveyInfo.find().populate('createBy', 'displayName').exec((err, surveyList) => {
         if (err) {
             return console.error(err);
         } else {
+            // surveyList.populate('createBys', 'displayName');
             res.render('survey/surveyList',
                 {
                     title: 'Public Survey',
@@ -24,7 +26,6 @@ module.exports.displaySurveyListPage = (req, res, next) => {
                 });
         }
     });
-
 }
 
 module.exports.displaySurveyFormPage = (req, res, next) => {

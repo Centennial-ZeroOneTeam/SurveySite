@@ -15,7 +15,6 @@
                 <td>My Surveys</td>
                 <td>Start date</td>
                 <td>End date</td>
-                <td>Username</td>
                 <td colspan="3" class="text-center">Action</td>
             </tr>
             </thead>
@@ -26,7 +25,6 @@
                         <td><%= surveyList[count].title %></td>
                         <td><%= surveyList[count].startDate %></td>
                         <td><%= surveyList[count].endDate %></td>
-                        <td><%= surveyList[count].username %></td>
                         <%= console.log(surveyList[count]) %>
                         <td class="text-center" width="100">
                             <a href="/account/viewSurvey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm">

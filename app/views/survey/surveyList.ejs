@@ -14,7 +14,6 @@
                     <td>Start Date </td>
                     <td>End Date </td>
                     <td>Username</td>
-                
                     <td class="text-center">Action</td>
                 </tr>
             </thead>
@@ -25,13 +24,13 @@
                     <td><%= surveyList[count].title %></td>
                     <td><%= surveyList[count].startDate %></td>
                     <td><%= surveyList[count].endDate %></td>
-                    <td><%= surveyList[count].username %></td>
+                    <td><%= surveyList[count].createBy.displayName %></td>
                     <td class="text-center" width="100"><a href="/survey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
                 </tr>
                 <% } %>
                 <% } else { %>
                 <tr>
-                    <td class="text-center" colspan="2">No Survey Currently</td>
+                    <td class="text-center" colspan="5">No Survey Currently</td>
                 </tr>
                 <% } %>
             </tbody>

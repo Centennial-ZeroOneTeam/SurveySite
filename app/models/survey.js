@@ -18,7 +18,11 @@ let surveyModel = mongoose.Schema(
             questionTitle: String,
             answerSelected: String
         }],
-        CreateBy: String
+        createBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'User'
+        }
     },
     {
         collection: "survey"

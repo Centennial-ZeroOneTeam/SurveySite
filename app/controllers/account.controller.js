@@ -8,50 +8,37 @@ function displayName(req) {
     return req.user ? req.user.displayName : ''
 }
 
-
-
-
 // My Survey
 module.exports.displaySurveyListPage = (req, res, next) => {
-
-    SurveyInfo.find((err, surveyList) => {
+    SurveyInfo.find({createBy: req.user.id}, (err, surveyList) => {
         if (err) {
             return console.error(err);
         } else {
             res.render('account/listSurvey', {
-                title: 'Survey List',
+                title: 'My Survey',
                 surveyList: surveyList,
                 displayName: displayName(req),
-                
             });
         }
     });
-
 }
 module.exports.displayAddSurveyPage = (req, res, next) => {
     res.render('account/addSurvey', {
         title: 'Create Survey',
         displayName: displayName(req),
-        
-
     });
 }
 module.exports.processAddSurvey = (req, res, next) => {
-    console.log(req.body);
-
     let newSurvey = SurveyInfo({
-        "surveyID": req.body.id,
-        "username":req.body.username,
         "title": req.body.title,
         "startDate": req.body.startDate,
         "endDate": req.body.endDate,
-        "status": req.body.status
+        "status": req.body.status,
+        createBy: req.user.id,
         // "questions": req.body.questions
     });
 
-
     console.log(newSurvey);
-
 
     SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
         if (err) {
