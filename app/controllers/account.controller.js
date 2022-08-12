@@ -37,12 +37,8 @@ module.exports.processAddSurvey = (req, res, next) => {
         "createBy": req.user.id,
         "questions": req.body.questions
     });
-
-    console.log("new added survey"+ newSurvey);
-
     SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
         if (err) {
-            console.log(err);
             res.end(err);
         } else {
             res.redirect('/account');
@@ -53,7 +49,7 @@ module.exports.processAddSurvey = (req, res, next) => {
 module.exports.displayEditSurveyPage = (req, res, next) => {
     let id = req.params.id;
     SurveyInfo.findById(id, (err, surveyToEdit) => {
-        console.log(surveyToEdit);
+        console.log("Edit survey" + surveyToEdit);
         if(err)
         {
             console.log(err);

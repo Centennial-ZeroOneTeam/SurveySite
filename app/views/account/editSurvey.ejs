@@ -62,9 +62,9 @@
                                     <a class="btn btn-outline-danger btn-sm removeQuestion">Remove Question</a>
                                 </div>
                                 <label class="form-label">Question</label>
-                                <input type="text" name="questions[<%= questionCount %>][question]" value="<%=   %>"
+                                <input type="text" name="surveyInfo.questions[<%= questionCount %>][title]" value="<%= surveyInfo.questions[questionCount].title %>"
                                        class="form-control mb-3"></input>
-                                <input type="hidden" name="questions[<%= questionCount %>][questionType]" value="st">
+                                <input type="hidden" name="surveyInfo.questions[<%= questionCount %>][questionType]" value="st">
                                 <textarea class="form-control" rows="3" disabled></textarea>
                             </div>
                         </div>
@@ -77,19 +77,19 @@
                             <div class="mb-3">
                                 <div class="text-end">
                                     <a class="btn btn-outline-danger btn-sm removeQuestion"
-                                       data-question="question<%= questionCount %>">Remove Question</a>
+                                       data-question="surveyInfo.question<%= questionCount %>">Remove Question</a>
                                 </div>
                                 <label class="form-label">Question</label>
-                                <input type="text" name="questions[<%= questionCount %>][question]" value="<%=   %>"
+                                <input type="text" name="surveyInfo.questions[<%= questionCount %>][title]" value="<%= surveyInfo.questions[questionCount].title%>"
                                        class="form-control mb-3"></input>
-                                <input type="hidden" name="questions[<%= questionCount %>][questionType]" value="mc">
+                                <input type="hidden" name="surveyInfo.questions[<%= questionCount %>][questionType]" value="mc">
                                 <div class="form-label">Answer</div>
                                 <div class="answer-list">
                                     <% for(let count = 0; count < 4; count++) { %>
                                         <div class="answer d-flex align-items-center mb-3">
                                             <input class="form-check-input" type="radio" disabled>
-                                            <input type="text" name="questions[<%= questionCount %>][answers]"
-                                                   class="form-control ms-2" value=""/>
+                                            <input type="text" name="surveyInfo.questions[<%= questionCount %>][answers][<%= count %>]"
+                                                   class="form-control ms-2" value="<%= surveyInfo.questions[questionCount].answers[count] %>"/>
                                             <a class="btn btn-danger btn-sm ms-2 removeMcAnswer">Remove</a>
                                         </div>
                                     <% } %>
