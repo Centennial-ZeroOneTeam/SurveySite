@@ -34,11 +34,11 @@ module.exports.processAddSurvey = (req, res, next) => {
         "startDate": req.body.startDate,
         "endDate": req.body.endDate,
         "status": req.body.status,
-        createBy: req.user.id,
-        // "questions": req.body.questions
+        "createBy": req.user.id,
+        "questions": req.body.questions
     });
 
-    console.log(newSurvey);
+    console.log("new added survey"+ newSurvey);
 
     SurveyInfo.create(newSurvey, (err, SurveyInfo) => {
         if (err) {
