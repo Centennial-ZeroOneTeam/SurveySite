@@ -20,8 +20,8 @@ function requireAuth(req, res, next)
     next();
 }
 
-router.get('/', requireAuth, surveyController.displaySurveyListPage);
-router.get('/:id', requireAuth, surveyController.displaySurveyFormPage);
-router.post('/:id', requireAuth, surveyController.processSubmitSurvey);
+router.get('/', surveyController.displaySurveyListPage);
+router.get('/:id', surveyController.displaySurveyFormPage);
+router.post('/:id', surveyController.processSubmitSurvey);
 
 module.exports = router;

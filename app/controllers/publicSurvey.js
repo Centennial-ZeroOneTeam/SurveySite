@@ -29,15 +29,44 @@ module.exports.displaySurveyListPage = (req, res, next) => {
 }
 
 module.exports.displaySurveyFormPage = (req, res, next) => {
-    let surveyInfo = {
-        "title": "Survey Title"
-    };
+    let id = req.params.id;
+    SurveyInfo.findById({_id: id}, (err, surveyToEdit) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            //show the edit view
+            res.render('survey/surveyForm', {
+                title: 'Complete Survey',
+                surveyInfo: surveyToEdit,
+                displayName: displayName(req)
+            });
+        }
+    });   
+   
+    // SurveyInfo.find().exec((err, surveyList) =>{
 
-    res.render('survey/surveyForm', {
-        title: surveyInfo['title'],
-        surveyInfo: surveyInfo,
-        displayName: displayName(req)
-    });
+    //     if(err){
+    //         return console.error(err);
+    //     }
+    //     else{
+    //         res.render('survey/surveyForm', {
+    //             title: 'Survey Info',
+    //             surveyList: surveyList,
+    //             displayName: displayName(req)
+    //         });
+    //     }
+        
+    // })
+
+    // let surveyInfo = {
+    //     "title": SurveyInfo.title
+    // };
+
+    
 }
 
 module.exports.processSubmitSurvey = (req, res, next) => {

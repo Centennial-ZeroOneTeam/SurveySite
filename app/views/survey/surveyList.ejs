@@ -25,7 +25,7 @@
                     <td><%= surveyList[count].startDate %></td>
                     <td><%= surveyList[count].endDate %></td>
                     <td><%= surveyList[count].createBy.displayName %></td>
-                    <td class="text-center" width="100"><a href="/survey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
+                    <td class="text-center" width="100"><a href="/survey/<%= surveyList[count].id %>" class="btn btn-outline-info btn-sm"><i class="bi bi-pen"></i> do</a></td>
                 </tr>
                 <% } %>
                 <% } else { %>

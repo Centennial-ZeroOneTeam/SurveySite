@@ -5,13 +5,50 @@
 <%# Last Updated: Stanlye %>
 <%# Last Updated date: Jul 27 %>
 <div class="container pt-5">
-    <h1><%= title %></h1>
+    <h1><%= surveyInfo.title %></h1>
     <form method="POST" class="form">
         <% count = 1 %>
-        <div class="card mb-3">
+        <div id="question-list">
+
+            <% questionCount = 0 %>
+            <div id="question<%= questionCount %>" data-question-id="<%= questionCount %>"
+                 class="question card mb-3">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label"><%= surveyInfo.questions[questionCount].title %></label>
+                        <input type="text" name="surveyInfo.questions[<%= questionCount %>][title]" value="<%= surveyInfo.questions[questionCount].title %>"
+                               class="form-control mb-3"></input>
+                        <input type="hidden" name="surveyInfo.questions[<%= questionCount %>][questionType]" value="st">
+                        <textarea class="form-control" rows="3" disabled></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <% questionCount = 1 %>
+            <div id="question<%= questionCount %>" data-question-id="<%= questionCount %>"
+                 class="question card mb-3">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label"><%= surveyInfo.questions[questionCount].title%></label>
+                        <input type="hidden" name="surveyInfo.questions[<%= questionCount %>][questionType]" value="mc">
+                        <div class="answer-list">
+                            <% for(let count = 0; count < 4; count++) { %>
+                                <div class="answer d-flex align-items-center mb-3">
+                                    <input class="form-check-input" type="radio" disabled>
+                                    <input type="text" name="surveyInfo.questions[<%= questionCount %>][answers][<%= count %>]"
+                                           class="form-control ms-2" value="<%= surveyInfo.questions[questionCount].answers[count] %>"/>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end question list-->
+        <!-- <div class="card mb-3">
             <div class="card-body">
                 <div class="mb-3">
-                    <label class="form-label">1. blablabla?</label>
+                    <label class="form-label">1. Question 1</label>
                     <textarea name="answers[<%= count %>][answer]" class="form-control" rows="3"></textarea>
                     <input name="answers[<%= count %>][questionType]" type="hidden" value="st">
                 </div>
@@ -21,7 +58,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <div class="mb-3">
-                    <label class="form-label">2. blablabla?</label>
+                    <label class="form-label">2. Question 2</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answers[<%= count %>][answer]" value="A">
                         <label class="form-check-label" for="a20">A</label>
@@ -45,7 +82,7 @@
         <div class="text-end">
             <a class="btn btn-outline-primary" href="/survey">Cancel</a>
             <button class="btn btn-primary">Submit</button>
-        </div>
+        </div> -->
     </form>
 </div>
 <%- include ../partials/bottom_nav.ejs %>
