@@ -1,6 +1,6 @@
 <%- include ../partials/header.ejs %>
 <%- include ../partials/main_nav.ejs %>
-<%# Created by: Stanlye %>
+<%# Created by: Stanley %>
 <%# Created date: Jul 27 %>
 <%# Last Updated: bhhodip %>
 <%# Last Updated date: aug 05 %>
@@ -27,7 +27,7 @@
                         <td><%= surveyList[count].endDate %></td>
                         <%= console.log(surveyList[count]) %>
                         <td class="text-center" width="100">
-                            <a href="/account/viewSurvey/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm">
+                            <a href="/account/viewSurveyDetail/<%= surveyList[count].title %>" class="btn btn-outline-info btn-sm">
                                 <i class="bi bi-clipboard-data"></i> View</a></td>
                         <td class="text-center" width="100">
                             <a href="/account/editSurvey/<%= surveyList[count]._id %>" class="btn btn-outline-primary btn-sm">

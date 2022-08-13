@@ -45,28 +45,7 @@ module.exports.displaySurveyFormPage = (req, res, next) => {
                 displayName: displayName(req)
             });
         }
-    });   
-   
-    // SurveyInfo.find().exec((err, surveyList) =>{
-
-    //     if(err){
-    //         return console.error(err);
-    //     }
-    //     else{
-    //         res.render('survey/surveyForm', {
-    //             title: 'Survey Info',
-    //             surveyList: surveyList,
-    //             displayName: displayName(req)
-    //         });
-    //     }
-        
-    // })
-
-    // let surveyInfo = {
-    //     "title": SurveyInfo.title
-    // };
-
-    
+    });
 }
 
 module.exports.processSubmitSurvey = (req, res, next) => {
